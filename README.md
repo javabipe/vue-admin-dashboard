@@ -64,3 +64,11 @@ And go to `http://localhost:8080/ + token` address
 Create password
 
 ![pass](https://user-images.githubusercontent.com/24504648/60045326-4b760a80-96cd-11e9-8425-c3a4096e6fc7.png)
+
+### Identity with gotrue-js
+
+Build your own form and integrate it using [gotrue-js](https://github.com/netlify/gotrue-js) `npm i -S gotrue-js`
+
+Get Identity API endpoint
+
+![gotrue](https://user-images.githubusercontent.com/24504648/60048351-9f382200-96d4-11e9-9546-b2b43387c1c0.png)

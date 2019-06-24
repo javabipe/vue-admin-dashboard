@@ -3,6 +3,10 @@
     :class="getBackground"
     class="container"
   >
+    <Notification
+      :text="text"
+      v-if="hasText"
+    />
     <div
       :class="getRequestBackgroundandColor"
       class="request"
@@ -20,18 +24,20 @@
       <h4 :class="getColor">Sign into Design+Code HQ</h4>
 
       <form
-        @submit.prevent
+        @submit.prevent="onSubmit"
         class="form"
       >
         <input
           :class="getBackgroundandColorInput"
           placeholder="Email"
           type="email"
+          v-model="email"
         >
         <input
           :class="getBackgroundandColorInput"
           placeholder="Password"
           type="password"
+          v-model="password"
         >
         <button type="submit">Sign In</button>
         <button
@@ -50,19 +56,36 @@
 </template>
 
 <script>
-import * as netlifyIdentity from "netlify-identity-widget";
+import Notification from "@/components/Notification";
+
+// import * as netlifyIdentity from "netlify-identity-widget";
 import lightLogo from "@/assets/DCHQ.svg";
 import darkLogo from "@/assets/DCHQ-dark.svg";
+import { auth } from "@/main";
 
 export default {
   name: "Signin",
-  // data() {
-  //   return {
-  //     isDarkMode: true
-  //   };
-  // },
+  components: {
+    Notification
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      hasText: false,
+      text: ""
+    };
+  },
   mounted() {
-    netlifyIdentity.open();
+    // netlifyIdentity.open();
+    // нам всё ещё нужна инициализация netlifyIdentity, но теперь мы отправляем запрос через свою форму с помощью gotrue-js
+
+    const { userLoggedOut } = this.$route.params;
+
+    if (userLoggedOut) {
+      this.hasText = true;
+      this.text = "You have logged out!";
+    }
   },
   computed: {
     isDarkMode() {
@@ -90,6 +113,15 @@ export default {
   methods: {
     toggleDarkMode() {
       this.$store.dispatch("toggleDarkMode");
+    },
+    onSubmit() {
+      if (this.email && this.password) {
+        auth
+          // если передать третий аргумент true, то юзера запомнят в куках https://github.com/netlify/gotrue-js/blob/master/src/index.js#L57, также должнен стоять флаг 'setCookie: true' при инициализации
+          .login(this.email, this.password, true)
+          .then(res => this.$router.replace("/"))
+          .catch(console.log);
+      }
     }
   }
 };
