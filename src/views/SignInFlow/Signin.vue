@@ -55,12 +55,15 @@ import darkLogo from "@/assets/DCHQ-dark.svg";
 
 export default {
   name: "Signin",
-  data() {
-    return {
-      isDarkMode: true
-    };
-  },
+  // data() {
+  //   return {
+  //     isDarkMode: true
+  //   };
+  // },
   computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    },
     getBackground() {
       return !this.isDarkMode ? "light-background" : "dark-background";
     },
@@ -82,7 +85,7 @@ export default {
   },
   methods: {
     toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
+      this.$store.dispatch("toggleDarkMode");
     }
   }
 };
