@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import * as netlifyIdentity from "netlify-identity-widget";
 import lightLogo from "@/assets/DCHQ.svg";
 import darkLogo from "@/assets/DCHQ-dark.svg";
 
@@ -60,6 +61,9 @@ export default {
   //     isDarkMode: true
   //   };
   // },
+  mounted() {
+    netlifyIdentity.open();
+  },
   computed: {
     isDarkMode() {
       return this.$store.getters.isDarkMode;

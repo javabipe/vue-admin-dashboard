@@ -1,17 +1,22 @@
 import Vue from "vue";
 import Router from "vue-router";
+import * as netlifyIdentity from "netlify-identity-widget";
+
 import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/about",
@@ -38,3 +43,16 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  const currentUser = netlifyIdentity.currentUser();
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+
+  if (requiresAuth && !currentUser) {
+    next("/signin");
+  } else {
+    next();
+  }
+});
+
+export default router;
