@@ -1,29 +1,9 @@
 # vue-admin-dashboard
 
-## Project setup
-```
-npm install
-```
+https://coursehunters.net/course/vue-dlya-dizaynerov
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+https://github.com/thomaswangio/vue-admin-dashboard
 
-### Compiles and minifies for production
-```
-npm run build
-```
+https://designcode.io/design-system
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://designcode.io/design-system-in-figma
