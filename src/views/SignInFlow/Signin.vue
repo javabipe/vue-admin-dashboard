@@ -1,36 +1,46 @@
 <template>
-  <div class="container">
-    <div class="request">
+  <div
+    :class="getBackground"
+    class="container"
+  >
+    <div
+      :class="getRequestBackgroundandColor"
+      class="request"
+    >
       Don’t have a Design+Code HQ account?
-      <router-link
-        class="request-link"
-        to="/request"
-      >Request an account</router-link>
+      <router-link to="/request">Request an account</router-link>
     </div>
 
     <div class="login">
       <img
+        :src="srcLogo"
         alt
-        src="@/assets/DCHQ.svg"
       >
 
-      <h4>Sign into Design+Code HQ</h4>
+      <h4 :class="getColor">Sign into Design+Code HQ</h4>
 
       <form
         @submit.prevent
         class="form"
       >
         <input
+          :class="getBackgroundandColorInput"
           placeholder="Email"
           type="email"
         >
         <input
+          :class="getBackgroundandColorInput"
           placeholder="Password"
           type="password"
         >
         <button type="submit">Sign In</button>
+        <button
+          @click="toggleDarkMode"
+          type="button"
+        >Toggle</button>
 
         <router-link
+          :class="getForgotLinkColor"
           class="forgot-link"
           to="/recover"
         >Forgotten your password?</router-link>
@@ -40,12 +50,113 @@
 </template>
 
 <script>
+import lightLogo from "@/assets/DCHQ.svg";
+import darkLogo from "@/assets/DCHQ-dark.svg";
+
 export default {
-  name: "Signin"
+  name: "Signin",
+  data() {
+    return {
+      isDarkMode: true
+    };
+  },
+  computed: {
+    getBackground() {
+      return !this.isDarkMode ? "light-background" : "dark-background";
+    },
+    getColor() {
+      return !this.isDarkMode ? "dark-text" : "light-text";
+    },
+    getBackgroundandColorInput() {
+      return !this.isDarkMode ? "dark-field" : "light-field";
+    },
+    getRequestBackgroundandColor() {
+      return !this.isDarkMode ? "dark-request" : "light-request";
+    },
+    srcLogo() {
+      return !this.isDarkMode ? darkLogo : lightLogo;
+    },
+    getForgotLinkColor() {
+      return !this.isDarkMode ? "dark-forgot-link" : "light-forgot-link";
+    }
+  },
+  methods: {
+    toggleDarkMode() {
+      this.isDarkMode = !this.isDarkMode;
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.light-background {
+  background: $light-gray;
+}
+
+.dark-background {
+  background: $dark-blue;
+}
+
+.light-text {
+  color: $white;
+}
+
+.dark-text {
+  color: $black;
+}
+
+.light-field {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $white;
+
+  &::placeholder {
+    color: rgba(255, 221, 221, 0.3);
+  }
+}
+
+.dark-field {
+  background: rgba(198, 208, 235, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: $black;
+
+  &::placeholder {
+    color: rgba(0, 21, 21, 0.3);
+  }
+}
+
+.light-request {
+  color: rgba(255, 255, 255, 0.3);
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.dark-request {
+  color: rgba(0, 0, 0, 0.3);
+
+  a {
+    color: $black;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.light-forgot-link {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-forgot-link {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -57,15 +168,6 @@ export default {
   position: absolute;
   top: 40px;
   right: 40px;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.request-link {
-  color: #ffffff;
-
-  &:hover {
-    text-decoration: none;
-  }
 }
 
 .login {
@@ -84,19 +186,12 @@ h4 {
 .form input {
   width: 100%;
   height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 20px;
   line-height: 24px;
-  color: #ffffff;
   margin-bottom: 20px;
   padding: 0 20px;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-  }
 }
 
 .form button {
@@ -119,7 +214,6 @@ h4 {
   font-size: 16px;
   line-height: 25px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.3);
   text-decoration: none;
 
   &:hover {
