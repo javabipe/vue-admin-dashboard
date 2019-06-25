@@ -1,7 +1,10 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>&nbsp;|
-    <router-link to="/about">About</router-link>
+    <router-link
+      exact
+      to="/"
+    >Home</router-link>&nbsp;|
+    <router-link to="/team">Team</router-link>&nbsp;|
     <button
       @click="logout"
       type="button"

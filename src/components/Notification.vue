@@ -1,10 +1,15 @@
 <template>
-  <div
-    class="bubble"
-    v-show="show"
+  <transition
+    enter-active-class="animated fadeInDown"
+    leave-active-class="animated fadeOutRight"
   >
-    <div class="message">{{text}}</div>
-  </div>
+    <div
+      class="bubble"
+      v-show="show"
+    >
+      <div class="message">{{text}}</div>
+    </div>
+  </transition>
 </template>
 
 <script>

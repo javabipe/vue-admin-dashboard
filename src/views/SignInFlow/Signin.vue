@@ -7,13 +7,8 @@
       :text="text"
       v-if="hasText"
     />
-    <div
-      :class="getRequestBackgroundandColor"
-      class="request"
-    >
-      Don’t have a Design+Code HQ account?
-      <router-link to="/request">Request an account</router-link>
-    </div>
+
+    <RequestAccount/>
 
     <div class="login">
       <img
@@ -40,10 +35,8 @@
           v-model="password"
         >
         <button type="submit">Sign In</button>
-        <button
-          @click="toggleDarkMode"
-          type="button"
-        >Toggle</button>
+
+        <ThemeSwitch/>
 
         <router-link
           :class="getForgotLinkColor"
@@ -56,6 +49,8 @@
 </template>
 
 <script>
+import RequestAccount from "@/components/RequestAccount";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import Notification from "@/components/Notification";
 
 // import * as netlifyIdentity from "netlify-identity-widget";
@@ -66,7 +61,9 @@ import { auth } from "@/main";
 export default {
   name: "Signin",
   components: {
-    Notification
+    Notification,
+    RequestAccount,
+    ThemeSwitch
   },
   data() {
     return {
@@ -100,9 +97,6 @@ export default {
     getBackgroundandColorInput() {
       return !this.isDarkMode ? "dark-field" : "light-field";
     },
-    getRequestBackgroundandColor() {
-      return !this.isDarkMode ? "dark-request" : "light-request";
-    },
     srcLogo() {
       return !this.isDarkMode ? darkLogo : lightLogo;
     },
@@ -111,9 +105,6 @@ export default {
     }
   },
   methods: {
-    toggleDarkMode() {
-      this.$store.dispatch("toggleDarkMode");
-    },
     onSubmit() {
       if (this.email && this.password) {
         auth
@@ -128,74 +119,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.light-background {
-  background: $light-gray;
-}
-
-.dark-background {
-  background: $dark-blue;
-}
-
-.light-text {
-  color: $white;
-}
-
-.dark-text {
-  color: $black;
-}
-
-.light-field {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: $white;
-
-  &::placeholder {
-    color: rgba(255, 221, 221, 0.3);
-  }
-}
-
-.dark-field {
-  background: rgba(198, 208, 235, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: $black;
-
-  &::placeholder {
-    color: rgba(0, 21, 21, 0.3);
-  }
-}
-
-.light-request {
-  color: rgba(255, 255, 255, 0.3);
-
-  a {
-    color: $white;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.dark-request {
-  color: rgba(0, 0, 0, 0.3);
-
-  a {
-    color: $black;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.light-forgot-link {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.dark-forgot-link {
-  color: rgba(0, 0, 0, 0.3);
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -203,60 +126,7 @@ export default {
   min-height: 100vh;
 }
 
-.request {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-}
-
 .login {
   width: 400px;
-}
-
-h4 {
-  margin: 0;
-  margin-bottom: 20px;
-  font-size: 24px;
-  line-height: 34px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.form input {
-  width: 100%;
-  height: 60px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 20px;
-  line-height: 24px;
-  margin-bottom: 20px;
-  padding: 0 20px;
-}
-
-.form button {
-  width: 100%;
-  height: 60px;
-  background: #56ccf2;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  text-align: center;
-  font-size: 20px;
-  line-height: 24px;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  margin-bottom: 40px;
-  cursor: pointer;
-}
-
-.forgot-link {
-  font-size: 16px;
-  line-height: 25px;
-  text-align: center;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 </style>

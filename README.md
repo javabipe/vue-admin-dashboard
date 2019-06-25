@@ -6,6 +6,8 @@ https://github.com/thomaswangio/vue-admin-dashboard
 
 https://www.figma.com/file/aD9EmjTFnvKU5XucbMEqe1vZ/Design-Code-Dashboard?node-id=268%3A70&redirected=1
 
+https://www.figma.com/file/BDvnImiFgrZR4bopmMD7vfbl?node-id=265:1305
+
 https://designcode.io/design-system
 
 https://designcode.io/design-system-in-figma
