@@ -51,28 +51,48 @@ export default {
           id: "users"
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998] // x-axis
+          // categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998] // x-axis
+          type: "datetime"
+        },
+        grid: {
+          xaxis: {
+            lines: {
+              show: true
+            }
+          },
+          yaxis: {
+            lines: {
+              show: false
+            }
+          }
+        },
+        colors: ["#14f1d9", "#7b42f6"],
+        legend: {
+          labels: {
+            colors: ["white"]
+          },
+          position: "top"
+        },
+        tooltip: {
+          theme: "dark"
         }
       },
       series: [
         {
-          name: "Vue Chart",
-          data: [30, 40, 45, 50, 49, 60, 70, 81] // y-axis
-        }
-      ],
-      grid: {
-        xaxis: {
-          lines: {
-            show: true
-          }
+          name: "Active users",
+          data: [
+            [new Date("January 1, 2019"), 30],
+            [new Date("January 5, 2019"), 40]
+          ] // y-axis
         },
-        yaxis: {
-          lines: {
-            show: false
-          }
+        {
+          name: "New users",
+          data: [
+            [new Date("January 1, 2019"), 80],
+            [new Date("January 5, 2019"), 20]
+          ] // y-axis
         }
-      },
-      colors: ["#14f1d9", "#7b42f6"]
+      ]
     };
   },
   methods: {
@@ -114,19 +134,6 @@ export default {
       this.$refs.weeks.style.color = "#5b6175";
       this.$refs.weeks.style.background = "none";
       this.$refs.weeks.style.borderRadius = "none";
-    },
-    updateChart() {
-      const max = 90;
-      const min = 20;
-      const newData = this.series[0].data.map(() => {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      });
-      // In the same way, update the series option
-      this.series = [
-        {
-          data: newData
-        }
-      ];
     }
   }
 };
