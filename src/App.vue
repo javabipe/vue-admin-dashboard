@@ -49,17 +49,6 @@ p {
   color: $white;
 }
 
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: $white;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
 h4 {
   margin: 0;
   margin-bottom: 20px;
