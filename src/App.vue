@@ -31,6 +31,13 @@ body {
   background: $dark-blue;
 }
 
+// svg elements style from VueApexCharts
+line,
+text {
+  stroke: $light-gray;
+  opacity: 0.2;
+}
+
 h1 {
   @include heading-1;
 }

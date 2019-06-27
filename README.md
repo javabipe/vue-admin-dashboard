@@ -12,6 +12,10 @@ https://designcode.io/design-system
 
 https://designcode.io/design-system-in-figma
 
+https://apexcharts.com/
+
+https://apexcharts.com/vue-chart-demos/
+
 ## Netlify
 
 ### Deploy

@@ -22,18 +22,58 @@
           >Months</div>
         </div>
       </div>
+
+      <apexchart
+        :options="options"
+        :series="series"
+        type="area"
+        width="500"
+      ></apexchart>
     </div>
   </div>
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
 // @ is an alias to /src
 import Header from "@/components/Header.vue";
 
 export default {
   name: "Home",
   components: {
-    Header
+    Header,
+    apexchart: VueApexCharts
+  },
+  data() {
+    return {
+      options: {
+        chart: {
+          id: "users"
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998] // x-axis
+        }
+      },
+      series: [
+        {
+          name: "Vue Chart",
+          data: [30, 40, 45, 50, 49, 60, 70, 81] // y-axis
+        }
+      ],
+      grid: {
+        xaxis: {
+          lines: {
+            show: true
+          }
+        },
+        yaxis: {
+          lines: {
+            show: false
+          }
+        }
+      },
+      colors: ["#14f1d9", "#7b42f6"]
+    };
   },
   methods: {
     toggleDays() {
@@ -74,6 +114,19 @@ export default {
       this.$refs.weeks.style.color = "#5b6175";
       this.$refs.weeks.style.background = "none";
       this.$refs.weeks.style.borderRadius = "none";
+    },
+    updateChart() {
+      const max = 90;
+      const min = 20;
+      const newData = this.series[0].data.map(() => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      });
+      // In the same way, update the series option
+      this.series = [
+        {
+          data: newData
+        }
+      ];
     }
   }
 };
