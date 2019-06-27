@@ -40,7 +40,6 @@
 
         <router-link
           :class="getForgotLinkColor"
-          class="forgot-link"
           to="/recover"
         >Forgotten your password?</router-link>
       </form>
@@ -77,11 +76,18 @@ export default {
     // netlifyIdentity.open();
     // нам всё ещё нужна инициализация netlifyIdentity, но теперь мы отправляем запрос через свою форму с помощью gotrue-js
 
-    const { userLoggedOut } = this.$route.params;
+    // prettier-ignore
+    const { userLoggedOut, userRecoveredAccount, email, userRequestedAccount } = this.$route.params;
 
     if (userLoggedOut) {
       this.hasText = true;
       this.text = "You have logged out!";
+    } else if (userRecoveredAccount) {
+      this.hasText = true;
+      this.text = `A recovery email has been sent to ${email}`;
+    } else if (userRequestedAccount) {
+      this.hasText = true;
+      this.text = `Your request has been sent to an administator for ${email}`;
     }
   },
   computed: {
@@ -101,7 +107,7 @@ export default {
       return !this.isDarkMode ? darkLogo : lightLogo;
     },
     getForgotLinkColor() {
-      return !this.isDarkMode ? "dark-forgot-link" : "light-forgot-link";
+      return !this.isDarkMode ? "dark-link" : "light-link";
     }
   },
   methods: {
@@ -110,7 +116,7 @@ export default {
         auth
           // если передать третий аргумент true, то юзера запомнят в куках https://github.com/netlify/gotrue-js/blob/master/src/index.js#L57, также должнен стоять флаг 'setCookie: true' при инициализации
           .login(this.email, this.password, true)
-          .then(res => this.$router.replace("/"))
+          .then(() => this.$router.replace("/"))
           .catch(console.log);
       }
     }

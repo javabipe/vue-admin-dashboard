@@ -96,7 +96,21 @@ h4 {
   cursor: pointer;
 }
 
+/*
 .forgot-link {
+  font-size: 16px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+*/
+
+/* router-link в dom-дереве будет просто ссылкой, поэтому можем его стилизовать просто как тэг 'a' */
+a {
   font-size: 16px;
   line-height: 25px;
   text-align: center;
@@ -144,11 +158,11 @@ h4 {
   }
 }
 
-.light-forgot-link {
+.light-link {
   color: rgba(255, 255, 255, 0.3);
 }
 
-.dark-forgot-link {
+.dark-link {
   color: rgba(0, 0, 0, 0.3);
 }
 </style>

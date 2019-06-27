@@ -74,3 +74,45 @@ Build your own form and integrate it using [gotrue-js](https://github.com/netlif
 Get Identity API endpoint
 
 ![gotrue](https://user-images.githubusercontent.com/24504648/60048351-9f382200-96d4-11e9-9546-b2b43387c1c0.png)
+
+## Slack
+
+https://api.slack.com/
+
+Create new app
+
+![slack](https://user-images.githubusercontent.com/24504648/60206619-b6098080-985c-11e9-9bd9-737e4d8db2dd.png)
+
+Setup permissions
+
+![perm](https://user-images.githubusercontent.com/24504648/60206215-ac334d80-985b-11e9-9e0b-7a33eb51832e.png)
+
+In scopes section type `chat` and select `Send messages as Your_App_Name`
+
+![scopes](https://user-images.githubusercontent.com/24504648/60206330-f3b9d980-985b-11e9-8954-509d1830a9cb.png)
+
+![save](https://user-images.githubusercontent.com/24504648/60206472-4d220880-985c-11e9-92ff-425c10636cfb.png)
+
+Then install app to your workspace
+
+![installapp](https://user-images.githubusercontent.com/24504648/60206919-6c6d6580-985d-11e9-97fb-e5170e2181d8.png)
+
+![installapp2](https://user-images.githubusercontent.com/24504648/60206922-6f685600-985d-11e9-836d-5176143114d2.png)
+
+Get token
+
+![successinstall](https://user-images.githubusercontent.com/24504648/60207041-bb1aff80-985d-11e9-81de-56333b12f1cf.png)
+
+Create channel on your workspace
+
+![createchannel](https://user-images.githubusercontent.com/24504648/60208362-cae81300-9860-11e9-9867-dade6b052205.png)
+
+![createchannel2](https://user-images.githubusercontent.com/24504648/60208366-ccb1d680-9860-11e9-979c-8b4032712183.png)
+
+![channel](https://user-images.githubusercontent.com/24504648/60209221-db998880-9862-11e9-9e72-15ac4ae9fb04.png)
+
+Send request
+
+https://api.slack.com/methods/chat.postMessage
+
+![requesttochannel](https://user-images.githubusercontent.com/24504648/60210210-05ec4580-9865-11e9-94fb-1a0663908d29.png)
