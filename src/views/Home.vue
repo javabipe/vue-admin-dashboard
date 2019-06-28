@@ -161,8 +161,23 @@ export default {
         resolve: data => {
           console.log(data);
           // collection is resolved
-          const activeUsers = Object.values(data.activeUsers);
-          const newUsers = Object.values(data.newUsers);
+
+          const todaysDate = new Date();
+          const lastWeekDate = todaysDate.setDate(todaysDate.getDate() - 7); // 7 days ago
+
+          const activeUsers = [];
+          Object.keys(data.activeUsers).map(key => {
+            if (new Date(data.activeUsers[key][0]) > lastWeekDate) {
+              activeUsers.push(data.activeUsers[key]);
+            }
+          });
+
+          const newUsers = [];
+          Object.keys(data.newUsers).map(key => {
+            if (new Date(data.newUsers[key][0]) > lastWeekDate) {
+              newUsers.push(data.newUsers[key]);
+            }
+          });
 
           this.series = [
             {
