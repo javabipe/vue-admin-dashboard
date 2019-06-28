@@ -22,6 +22,12 @@ https://analytics.google.com
 
 https://support.google.com/analytics/answer/1008015?hl=ru
 
+https://firebase.google.com/docs/firestore
+
+https://github.com/gdg-tangier/vue-firestore
+
+https://alligator.io/vuejs/vue-cloud-firestore/
+
 ## Netlify
 
 ### Deploy
@@ -178,3 +184,7 @@ Make a copy because we need to change the background for the darkmod
 ![report13](https://user-images.githubusercontent.com/24504648/60337828-c761a280-99ac-11e9-99ad-4dd44e1caa3d.png)
 
 ![report14](https://user-images.githubusercontent.com/24504648/60337829-c7fa3900-99ac-11e9-96fa-7d314e95248f.png)
+
+## Firebase/firestore
+
+![firestore](https://user-images.githubusercontent.com/24504648/60344177-9c804a00-99be-11e9-8b74-0100167c1c0c.png)

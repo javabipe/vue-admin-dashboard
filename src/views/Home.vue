@@ -61,6 +61,8 @@ import VueApexCharts from "vue-apexcharts";
 // @ is an alias to /src
 import Header from "@/components/Header.vue";
 
+import { db } from "@/firebase"; // is an alias too, like import { db } from "../firebase";, not firebase lib @firebase
+
 export default {
   name: "Home",
   components: {
@@ -100,22 +102,7 @@ export default {
           theme: "dark"
         }
       },
-      series: [
-        {
-          name: "Active users",
-          data: [
-            [new Date("January 1, 2019"), 30],
-            [new Date("January 5, 2019"), 40]
-          ] // y-axis
-        },
-        {
-          name: "New users",
-          data: [
-            [new Date("January 1, 2019"), 80],
-            [new Date("January 5, 2019"), 20]
-          ] // y-axis
-        }
-      ]
+      series: []
     };
   },
   computed: {
@@ -163,6 +150,43 @@ export default {
       this.$refs.weeks.style.background = "none";
       this.$refs.weeks.style.borderRadius = "none";
     }
+  },
+  firestore() {
+    return {
+      traffic: {
+        // collection reference.
+        ref: db.collection("traffic"),
+        // Bind the collection as an object if you would like to.
+        objects: true,
+        resolve: data => {
+          console.log(data);
+          // collection is resolved
+          const activeUsers = data.users.active;
+          const newUsers = data.users.new;
+
+          this.series = [
+            {
+              name: "Active users",
+              data: [
+                [new Date("January 1, 2019"), activeUsers],
+                [new Date("January 5, 2019"), 40]
+              ] // y-axis
+            },
+            {
+              name: "New users",
+              data: [
+                [new Date("January 1, 2019"), newUsers],
+                [new Date("January 5, 2019"), 20]
+              ] // y-axis
+            }
+          ];
+        },
+        reject: err => {
+          // collection is rejected
+          console.log(err);
+        }
+      }
+    };
   }
 };
 </script>
