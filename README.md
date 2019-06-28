@@ -188,3 +188,9 @@ Make a copy because we need to change the background for the darkmod
 ## Firebase/firestore
 
 ![firestore](https://user-images.githubusercontent.com/24504648/60344177-9c804a00-99be-11e9-8b74-0100167c1c0c.png)
+
+![firestore2](https://user-images.githubusercontent.com/24504648/60346606-24b51e00-99c4-11e9-9f94-ae524fc2345a.png)
+
+![firestore3](https://user-images.githubusercontent.com/24504648/60346607-24b51e00-99c4-11e9-96f0-c5b74e2690a9.png)
+
+![firestore4](https://user-images.githubusercontent.com/24504648/60346609-24b51e00-99c4-11e9-893d-9c09c11f90ef.png)

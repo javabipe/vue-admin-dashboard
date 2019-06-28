@@ -161,23 +161,17 @@ export default {
         resolve: data => {
           console.log(data);
           // collection is resolved
-          const activeUsers = data.users.active;
-          const newUsers = data.users.new;
+          const activeUsers = Object.values(data.activeUsers);
+          const newUsers = Object.values(data.newUsers);
 
           this.series = [
             {
               name: "Active users",
-              data: [
-                [new Date("January 1, 2019"), activeUsers],
-                [new Date("January 5, 2019"), 40]
-              ] // y-axis
+              data: activeUsers // y-axis
             },
             {
               name: "New users",
-              data: [
-                [new Date("January 1, 2019"), newUsers],
-                [new Date("January 5, 2019"), 20]
-              ] // y-axis
+              data: newUsers // y-axis
             }
           ];
         },
