@@ -3,8 +3,11 @@
     <Header/>
     <div class="container">
       <div class="spread">
-        <h1>Traffic Overview</h1>
-        <div class="toggle">
+        <h1 :class="{'light': isDarkMode, 'dark': !isDarkMode}">Traffic Overview</h1>
+        <div
+          :class="{'light-box': isDarkMode, 'dark-box': !isDarkMode}"
+          class="toggle"
+        >
           <div
             @click="toggleDays"
             class="days"
@@ -29,6 +32,26 @@
         type="area"
         width="500"
       ></apexchart>
+
+      <iframe
+        allowfullscreen
+        frameborder="0"
+        height="450"
+        src="https://datastudio.google.com/embed/reporting/1XHL2eg5DKPOIg4TrZ1-KM9hZABFHhSna/page/o3Zt"
+        style="border:0"
+        v-if="isDarkMode"
+        width="600"
+      ></iframe>
+
+      <iframe
+        allowfullscreen
+        frameborder="0"
+        height="450"
+        src="https://datastudio.google.com/embed/reporting/140R6630W3J702E95TsczaUnjfNjXstdW/page/o3Zt"
+        style="border:0"
+        v-if="!isDarkMode"
+        width="600"
+      ></iframe>
     </div>
   </div>
 </template>
@@ -69,7 +92,7 @@ export default {
         colors: ["#14f1d9", "#7b42f6"],
         legend: {
           labels: {
-            colors: ["white"]
+            colors: [this.isDarkMode ? "white" : "black"]
           },
           position: "top"
         },
@@ -94,6 +117,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    }
   },
   methods: {
     toggleDays() {
@@ -151,8 +179,12 @@ export default {
   width: 100%;
 }
 
-h1 {
-  @include heading-3;
+h1.light {
+  @include heading-3($white);
+}
+
+h1.dark {
+  @include heading-3($black);
 }
 
 .toggle {
@@ -164,8 +196,6 @@ h1 {
   padding: 5px;
   display: flex;
   flex-wrap: nowrap;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     cursor: pointer;

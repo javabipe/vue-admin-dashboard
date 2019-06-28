@@ -16,6 +16,12 @@ https://apexcharts.com/
 
 https://apexcharts.com/vue-chart-demos/
 
+https://datastudio.google.com/
+
+https://analytics.google.com
+
+https://support.google.com/analytics/answer/1008015?hl=ru
+
 ## Netlify
 
 ### Deploy
@@ -120,3 +126,55 @@ Send request
 https://api.slack.com/methods/chat.postMessage
 
 ![requesttochannel](https://user-images.githubusercontent.com/24504648/60210210-05ec4580-9865-11e9-94fb-1a0663908d29.png)
+
+## Google Data Studio
+
+Create new report
+
+![report](https://user-images.githubusercontent.com/24504648/60334576-86659000-99a4-11e9-908d-dacb654f130b.png)
+
+Select your data source
+
+![report2](https://user-images.githubusercontent.com/24504648/60334689-be6cd300-99a4-11e9-8016-7a671e328a36.png)
+
+We can change background color
+
+![report3](https://user-images.githubusercontent.com/24504648/60334986-74d0b800-99a5-11e9-9a51-b1feb8367335.png)
+
+![report4](https://user-images.githubusercontent.com/24504648/60334987-74d0b800-99a5-11e9-9362-5476e0f942e8.png)
+
+![report5](https://user-images.githubusercontent.com/24504648/60334984-74382180-99a5-11e9-879d-2e86232684b6.png)
+
+Add a chart and setup
+
+![report6](https://user-images.githubusercontent.com/24504648/60335101-aea1be80-99a5-11e9-9d57-bf3329eee4d6.png)
+
+![report7](https://user-images.githubusercontent.com/24504648/60335224-10622880-99a6-11e9-81f0-e0fc0f26400c.png)
+
+![report8](https://user-images.githubusercontent.com/24504648/60335226-122bec00-99a6-11e9-9c52-619919eef187.png)
+
+Then get embed code
+
+![embed](https://user-images.githubusercontent.com/24504648/60334106-671a3300-99a3-11e9-881b-7e1bb5ba9ebc.png)
+
+![embed2](https://user-images.githubusercontent.com/24504648/60334109-68e3f680-99a3-11e9-93c1-9f9c6a34aef5.png)
+
+![embed3](https://user-images.githubusercontent.com/24504648/60334114-6a152380-99a3-11e9-950c-aca2caf7de41.png)
+
+Result
+
+![report9](https://user-images.githubusercontent.com/24504648/60336091-135e1880-99a8-11e9-9ef0-4974dfaa0d08.png)
+
+![report10](https://user-images.githubusercontent.com/24504648/60336092-1527dc00-99a8-11e9-8210-b91b8036a93f.png)
+
+Make a copy because we need to change the background for the darkmod
+
+![report10](https://user-images.githubusercontent.com/24504648/60337830-c7fa3900-99ac-11e9-8e87-787e9dd87115.png)
+
+![report11](https://user-images.githubusercontent.com/24504648/60337825-c6c90c00-99ac-11e9-998a-a34410f69c5b.png)
+
+![report12](https://user-images.githubusercontent.com/24504648/60337826-c761a280-99ac-11e9-8be3-3fa028f5bd26.png)
+
+![report13](https://user-images.githubusercontent.com/24504648/60337828-c761a280-99ac-11e9-99ad-4dd44e1caa3d.png)
+
+![report14](https://user-images.githubusercontent.com/24504648/60337829-c7fa3900-99ac-11e9-96fa-7d314e95248f.png)

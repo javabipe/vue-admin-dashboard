@@ -1,5 +1,8 @@
 <template>
-  <div id="nav">
+  <div
+    :class="{'nav-light': !isDarkMode, 'nav-dark': isDarkMode}"
+    id="nav"
+  >
     <div class="nav-1">
       <img
         alt
@@ -10,8 +13,14 @@
         exact
         to="/"
       >Home</router-link>
-      <router-link to="/manage">Manage Users</router-link>
-      <router-link to="/team">Team</router-link>
+      <router-link
+        :class="{'light-nav': !isDarkMode, 'dark-nav': isDarkMode}"
+        to="/manage"
+      >Manage Users</router-link>
+      <router-link
+        :class="{'light-nav': !isDarkMode, 'dark-nav': isDarkMode}"
+        to="/team"
+      >Team</router-link>
     </div>
 
     <a @click="logout">
@@ -52,11 +61,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nav-light {
+  background: $white;
+}
+
+.nav-dark {
+  background: $super-dark-blue;
+}
+
 #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $super-dark-blue;
   box-sizing: border-box;
   width: 100%;
   padding: 15px 15%;

@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    :class="{'light-background': !isDarkMode, 'dark-background': isDarkMode}"
+    id="app"
+  >
     <router-view/>
   </div>
 </template>
@@ -31,19 +34,18 @@ body {
   background: $dark-blue;
 }
 
-// svg elements style from VueApexCharts
-line,
-text {
-  stroke: $light-gray;
-  opacity: 0.2;
-}
-
 h1 {
   @include heading-1;
 }
 
 p {
   @include large-text-bold($purple);
+}
+
+// svg elements style from VueApexCharts
+line,
+text {
+  opacity: 0.2;
 }
 
 #app {
@@ -120,10 +122,24 @@ a {
 /* Theme */
 .light-background {
   background: $light-gray;
+
+  // svg elements style from VueApexCharts
+  line,
+  text {
+    stroke: $black;
+    // opacity: 0.2;
+  }
 }
 
 .dark-background {
   background: $dark-blue;
+
+  // svg elements style from VueApexCharts
+  line,
+  text {
+    stroke: $light-gray;
+    // opacity: 0.2;
+  }
 }
 
 .light-text {
@@ -160,5 +176,15 @@ a {
 
 .dark-link {
   color: rgba(0, 0, 0, 0.3);
+}
+
+.light-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-box {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
