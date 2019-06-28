@@ -187,6 +187,36 @@ Make a copy because we need to change the background for the darkmod
 
 ## Firebase/firestore
 
+https://github.com/gdg-tangier/vue-firestore
+
+```js
+// first render when component mounted
+firestore() {
+  return {
+    traffic: {
+      ref: db.collection("traffic"),
+      objects: true,
+      resolve: data => {
+        console.log(data); // traffic
+        const activeUsers = data.activeUsers; // traffic.activeUsers
+      },
+      reject: err => {
+        console.log(err);
+      }
+    }
+  };
+}
+
+// manually binding docs, for example we click to button and run this
+this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
+  .then(data => {
+    console.log(data); // newUsers
+  })
+  .catch(err => {
+    console.log(err);
+  });
+```
+
 ![firestore](https://user-images.githubusercontent.com/24504648/60344177-9c804a00-99be-11e9-8b74-0100167c1c0c.png)
 
 ![firestore2](https://user-images.githubusercontent.com/24504648/60346606-24b51e00-99c4-11e9-9f94-ae524fc2345a.png)

@@ -123,6 +123,56 @@ export default {
       this.$refs.months.style.color = "#5b6175";
       this.$refs.months.style.background = "none";
       this.$refs.months.style.borderRadius = "none";
+
+      // render after update
+      const activeUsers = [];
+      const newUsers = [];
+
+      // Binding Docs
+      this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
+        .then(data => {
+          console.log(data); // activeUsers
+
+          const todaysDate = new Date();
+          const lastWeekDate = todaysDate.setDate(todaysDate.getDate() - 7); // 7 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastWeekDate) {
+              activeUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
+        .then(data => {
+          console.log(data); // newUsers
+
+          const todaysDate = new Date();
+          const lastWeekDate = todaysDate.setDate(todaysDate.getDate() - 7); // 7 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastWeekDate) {
+              newUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.series = [
+        {
+          name: "Active users",
+          data: activeUsers // y-axis
+        },
+        {
+          name: "New users",
+          data: newUsers // y-axis
+        }
+      ];
     },
     toggleWeeks() {
       this.$refs.weeks.style.color = "white";
@@ -136,6 +186,56 @@ export default {
       this.$refs.months.style.color = "#5b6175";
       this.$refs.months.style.background = "none";
       this.$refs.months.style.borderRadius = "none";
+
+      // render after update
+      const activeUsers = [];
+      const newUsers = [];
+
+      // Binding Docs
+      this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
+        .then(data => {
+          console.log(data); // activeUsers
+
+          const todaysDate = new Date();
+          const lastMonthDate = todaysDate.setDate(todaysDate.getDate() - 30); // 30 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastMonthDate) {
+              activeUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
+        .then(data => {
+          console.log(data); // newUsers
+
+          const todaysDate = new Date();
+          const lastMonthDate = todaysDate.setDate(todaysDate.getDate() - 30); // 30 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastMonthDate) {
+              newUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.series = [
+        {
+          name: "Active users",
+          data: activeUsers // y-axis
+        },
+        {
+          name: "New users",
+          data: newUsers // y-axis
+        }
+      ];
     },
     toggleMonths() {
       this.$refs.months.style.color = "white";
@@ -149,8 +249,59 @@ export default {
       this.$refs.weeks.style.color = "#5b6175";
       this.$refs.weeks.style.background = "none";
       this.$refs.weeks.style.borderRadius = "none";
+
+      // render after update
+      const activeUsers = [];
+      const newUsers = [];
+
+      // Binding Docs
+      this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
+        .then(data => {
+          console.log(data); // activeUsers
+
+          const todaysDate = new Date();
+          const lastYearDate = todaysDate.setDate(todaysDate.getDate() - 365); // 365 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastYearDate) {
+              activeUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
+        .then(data => {
+          console.log(data); // newUsers
+
+          const todaysDate = new Date();
+          const lastYearDate = todaysDate.setDate(todaysDate.getDate() - 365); // 365 days ago
+
+          Object.keys(data).map(key => {
+            if (new Date(data[key][0]) > lastYearDate) {
+              newUsers.push(data[key]);
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      this.series = [
+        {
+          name: "Active users",
+          data: activeUsers // y-axis
+        },
+        {
+          name: "New users",
+          data: newUsers // y-axis
+        }
+      ];
     }
   },
+  // first render
   firestore() {
     return {
       traffic: {
