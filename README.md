@@ -91,6 +91,48 @@ Get Identity API endpoint
 
 ![gotrue](https://user-images.githubusercontent.com/24504648/60048351-9f382200-96d4-11e9-9546-b2b43387c1c0.png)
 
+### Lambda functions
+
+https://www.netlify.com/docs/functions/
+
+![func](https://user-images.githubusercontent.com/24504648/60364009-c2711300-99ed-11e9-8dda-ddea63736052.png)
+
+Edit settings
+
+![func2](https://user-images.githubusercontent.com/24504648/60364082-fba98300-99ed-11e9-9c24-df0aba7d0f45.png)
+
+Create `functions` folder in root directory with lambda functions
+
+#### Run your serverless functions locally for testing
+
+Install [netlify-lambda](https://www.npmjs.com/package/netlify-lambda) `npm install netlify-lambda`
+
+Create `netlify.toml` configuration file in root directory
+
+```
+[build]
+  functions = "./functions"
+```
+
+Copy `functions` folder with lambda functions in **src** directory
+
+See [example](https://github.com/netlify/create-react-app-lambda)
+
+Grab npm scripts
+
+```json
+{
+  "scripts": {
+    "start:lambda": "netlify-lambda serve src/functions",
+    "build:lambda": "netlify-lambda build src/functions"
+  }
+}
+```
+
+Run `npm run start:lambda`
+
+Go to `http://localhost:9000/hello`
+
 ## Slack
 
 https://api.slack.com/
@@ -224,3 +266,18 @@ this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
 ![firestore3](https://user-images.githubusercontent.com/24504648/60346607-24b51e00-99c4-11e9-96f0-c5b74e2690a9.png)
 
 ![firestore4](https://user-images.githubusercontent.com/24504648/60346609-24b51e00-99c4-11e9-893d-9c09c11f90ef.png)
+
+### Firestore rules
+
+https://firebase.google.com/docs/firestore/security/rules-structure
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /traffic/{document=**} {
+      allow read;
+    }
+  }
+}
+```
