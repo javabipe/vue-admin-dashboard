@@ -29,29 +29,52 @@
       <apexchart
         :options="options"
         :series="series"
+        height="500px"
         type="area"
-        width="500"
+        width="100%"
       ></apexchart>
 
-      <iframe
-        allowfullscreen
-        frameborder="0"
-        height="450"
-        src="https://datastudio.google.com/embed/reporting/1XHL2eg5DKPOIg4TrZ1-KM9hZABFHhSna/page/o3Zt"
-        style="border:0"
-        v-if="isDarkMode"
-        width="600"
-      ></iframe>
+      <div class="gchart-container">
+        <iframe
+          allowfullscreen
+          frameborder="0"
+          height="450"
+          src="https://datastudio.google.com/embed/reporting/1XHL2eg5DKPOIg4TrZ1-KM9hZABFHhSna/page/o3Zt"
+          style="border:0"
+          v-if="isDarkMode"
+          width="600"
+        ></iframe>
 
-      <iframe
-        allowfullscreen
-        frameborder="0"
-        height="450"
-        src="https://datastudio.google.com/embed/reporting/140R6630W3J702E95TsczaUnjfNjXstdW/page/o3Zt"
-        style="border:0"
-        v-if="!isDarkMode"
-        width="600"
-      ></iframe>
+        <iframe
+          allowfullscreen
+          frameborder="0"
+          height="450"
+          src="https://datastudio.google.com/embed/reporting/140R6630W3J702E95TsczaUnjfNjXstdW/page/o3Zt"
+          style="border:0"
+          v-if="!isDarkMode"
+          width="600"
+        ></iframe>
+
+        <iframe
+          allowfullscreen
+          frameborder="0"
+          height="450"
+          src="https://datastudio.google.com/embed/reporting/1XHL2eg5DKPOIg4TrZ1-KM9hZABFHhSna/page/o3Zt"
+          style="border:0"
+          v-if="!isDarkMode"
+          width="600"
+        ></iframe>
+
+        <iframe
+          allowfullscreen
+          frameborder="0"
+          height="450"
+          src="https://datastudio.google.com/embed/reporting/140R6630W3J702E95TsczaUnjfNjXstdW/page/o3Zt"
+          style="border:0"
+          v-if="isDarkMode"
+          width="600"
+        ></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -94,7 +117,8 @@ export default {
         colors: ["#14f1d9", "#7b42f6"],
         legend: {
           labels: {
-            colors: [this.isDarkMode ? "white" : "black"]
+            // colors: [this.isDarkMode ? "white" : "black"] // помоему в data computed поля недоступны
+            colors: [this.$store.getters.isDarkMode ? "white" : "black"] // поэтому берём напрямую из стора
           },
           position: "top"
         },
@@ -131,7 +155,7 @@ export default {
       // Binding Docs
       this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
         .then(data => {
-          console.log(data); // activeUsers
+          // console.log(data); // activeUsers
 
           const todaysDate = new Date();
           const lastWeekDate = todaysDate.setDate(todaysDate.getDate() - 7); // 7 days ago
@@ -143,12 +167,13 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
       this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
         .then(data => {
-          console.log(data); // newUsers
+          // console.log(data); // newUsers
 
           const todaysDate = new Date();
           const lastWeekDate = todaysDate.setDate(todaysDate.getDate() - 7); // 7 days ago
@@ -160,6 +185,7 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
@@ -194,7 +220,7 @@ export default {
       // Binding Docs
       this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
         .then(data => {
-          console.log(data); // activeUsers
+          // console.log(data); // activeUsers
 
           const todaysDate = new Date();
           const lastMonthDate = todaysDate.setDate(todaysDate.getDate() - 30); // 30 days ago
@@ -206,12 +232,13 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
       this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
         .then(data => {
-          console.log(data); // newUsers
+          // console.log(data); // newUsers
 
           const todaysDate = new Date();
           const lastMonthDate = todaysDate.setDate(todaysDate.getDate() - 30); // 30 days ago
@@ -223,6 +250,7 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
@@ -257,7 +285,7 @@ export default {
       // Binding Docs
       this.$binding("activeUsers", db.collection("traffic").doc("activeUsers"))
         .then(data => {
-          console.log(data); // activeUsers
+          // console.log(data); // activeUsers
 
           const todaysDate = new Date();
           const lastYearDate = todaysDate.setDate(todaysDate.getDate() - 365); // 365 days ago
@@ -269,12 +297,13 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
       this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
         .then(data => {
-          console.log(data); // newUsers
+          // console.log(data); // newUsers
 
           const todaysDate = new Date();
           const lastYearDate = todaysDate.setDate(todaysDate.getDate() - 365); // 365 days ago
@@ -286,6 +315,7 @@ export default {
           });
         })
         .catch(err => {
+          // eslint-disable-next-line
           console.log(err);
         });
 
@@ -310,7 +340,7 @@ export default {
         // Bind the collection as an object if you would like to.
         objects: true,
         resolve: data => {
-          console.log(data);
+          // console.log(data);
           // collection is resolved
 
           const todaysDate = new Date();
@@ -343,6 +373,7 @@ export default {
         },
         reject: err => {
           // collection is rejected
+          // eslint-disable-next-line
           console.log(err);
         }
       }
@@ -353,7 +384,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 0 5%; // 0 15%
+  padding: 0 15%; // 0 5%
 }
 
 .spread {
@@ -361,14 +392,10 @@ export default {
   justify-content: space-between;
   margin-top: 40px;
   width: 100%;
-}
 
-h1.light {
-  @include heading-3($white);
-}
-
-h1.dark {
-  @include heading-3($black);
+  @media all and (max-width: 767px) {
+    flex-direction: column;
+  }
 }
 
 .toggle {
@@ -380,6 +407,7 @@ h1.dark {
   padding: 5px;
   display: flex;
   flex-wrap: nowrap;
+  // font-weight: 600;
 
   &:hover {
     cursor: pointer;

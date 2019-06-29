@@ -41,6 +41,10 @@ export default {
   position: absolute;
   top: 40px;
   right: 40px;
+
+  @media all and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .light-request {

@@ -3,7 +3,7 @@
     :class="{'light-background': !isDarkMode, 'dark-background': isDarkMode}"
     class="container"
   >
-    <div class="login">
+    <div class="request">
       <img
         alt
         src="@/assets/DCHQ.svg"
@@ -87,6 +87,7 @@ export default {
               }
             });
           })
+          // eslint-disable-next-line
           .catch(console.log);
       }
     }
@@ -102,7 +103,9 @@ export default {
   min-height: 100vh;
 }
 
-.login {
+.request {
   width: 400px;
+  text-align: center;
+  margin: 0 16px;
 }
 </style>

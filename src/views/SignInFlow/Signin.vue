@@ -117,6 +117,7 @@ export default {
           // если передать третий аргумент true, то юзера запомнят в куках https://github.com/netlify/gotrue-js/blob/master/src/index.js#L57, также должнен стоять флаг 'setCookie: true' при инициализации
           .login(this.email, this.password, true)
           .then(() => this.$router.replace("/"))
+          // eslint-disable-next-line
           .catch(console.log);
       }
     }
@@ -130,9 +131,13 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 16px;
+  padding-bottom: 24px;
 }
 
 .login {
   width: 400px;
+  text-align: center;
+  margin: 0 16px;
 }
 </style>

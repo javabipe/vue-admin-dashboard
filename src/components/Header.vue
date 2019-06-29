@@ -48,12 +48,13 @@ export default {
       const user = auth.currentUser();
       user
         .logout()
-        .then(res => {
+        .then(() => {
           this.$router.push({
             name: "Signin", // name 'Signin', not path '/signin', see router file
             params: { userLoggedOut: true }
           });
         })
+        // eslint-disable-next-line
         .catch(console.log);
     }
   }
@@ -62,11 +63,14 @@ export default {
 
 <style lang="scss" scoped>
 .nav-light {
-  background: $white;
+  // background: $white;
+  background: #f0f3f5;
+  box-shadow: 1px 3px 20px 4px #c6d0eb59;
 }
 
 .nav-dark {
   background: $super-dark-blue;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 #nav {
@@ -89,6 +93,13 @@ export default {
       color: $middle-blue;
     }
   }
+
+  a,
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .nav-1 {
@@ -96,8 +107,11 @@ export default {
   align-items: center;
 
   a {
-    margin-right: 20px;
-    margin-left: 20px;
+    margin: 0 20px;
+
+    @media all and (max-width: 767px) {
+      display: none;
+    }
   }
 
   img {

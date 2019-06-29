@@ -19,7 +19,7 @@ export default {
   },
   mounted() {
     const isDarkMode = this.$store.getters.isDarkMode;
-    document.body.style.background = isDarkMode ? "#212c4f" : "#f8f9fa"; // к сожалению, у нас сдесь нет доступа к scss переменным
+    document.body.style.background = isDarkMode ? "#212c4f" : "#f0f3f5"; // к сожалению, у нас сдесь нет доступа к scss переменным $dark-blue и $light-gray
   }
 };
 </script>
@@ -31,11 +31,25 @@ export default {
 
 body {
   margin: 0;
-  background: $dark-blue;
+  // background: $dark-blue;
 }
 
-h1 {
-  @include heading-1;
+#app {
+  // font-family: "Avenir", Helvetica, Arial, sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: $system-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // text-align: center;
+  color: $white;
+}
+
+h1.dark {
+  @include heading-3($black);
+}
+
+h1.light {
+  @include heading-3($white);
 }
 
 p {
@@ -46,16 +60,6 @@ p {
 line,
 text {
   opacity: 0.2;
-}
-
-#app {
-  // font-family: "Avenir", Helvetica, Arial, sans-serif;
-  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-family: $system-font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $white;
 }
 
 h4 {
@@ -76,6 +80,14 @@ h4 {
   line-height: 24px;
   margin-bottom: 20px;
   padding: 0 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  &:focus {
+    border: 1px solid $blue;
+    box-shadow: 0 0 0 1px $blue;
+    outline: none;
+  }
 }
 
 .form button {
@@ -89,7 +101,7 @@ h4 {
   line-height: 24px;
   color: #ffffff;
   border: none;
-  outline: none;
+  // outline: none;
   margin-bottom: 40px;
   cursor: pointer;
 }
@@ -117,6 +129,10 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.manage {
+  min-height: 100vh;
 }
 
 /* Theme */
@@ -156,7 +172,7 @@ a {
   color: $white;
 
   &::placeholder {
-    color: rgba(255, 221, 221, 0.3);
+    color: rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -166,7 +182,7 @@ a {
   color: $black;
 
   &::placeholder {
-    color: rgba(0, 21, 21, 0.3);
+    color: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -184,7 +200,8 @@ a {
 }
 
 .dark-box {
-  background: rgba(0, 0, 0, 0.1);
+  // background: rgba(0, 0, 0, 0.1);
+  background: #c6d0eb40;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>

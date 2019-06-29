@@ -137,14 +137,14 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 0 5%;
+  padding: 0 15%; // 0 5%
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
+  justify-content: space-evenly; // center
+  // align-items: baseline;
 }
 
 .card-1 {
@@ -177,19 +177,24 @@ export default {
 
 .light-card {
   background: $white;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 15px 30px rgba(103, 110, 144, 0.15);
 
   &:hover {
-    box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.35);
+    // box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 4px rgba(103, 110, 144, 0.05),
+      0 2px 2px rgba(103, 110, 144, 0.05);
   }
 }
 
 .dark-card {
   background: $super-dark-blue;
-  box-shadow: 0px 20px 40px rgba(255, 255, 255, 0.15);
+  // box-shadow: 0px 20px 40px rgba(255, 255, 255, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 20px 40px;
 
   &:hover {
-    box-shadow: 0px 30px 60px rgba(255, 255, 255, 0.35);
+    // box-shadow: 0px 30px 60px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -206,13 +211,21 @@ export default {
   background: #283049;
 }
 
-h2 {
-  @include heading-2;
+h1 {
+  margin-top: 40px;
+  text-align: center;
 }
 
 h3 {
-  @include heading-3;
   margin-bottom: 16px;
+}
+
+h3.dark {
+  @include heading-3($black);
+}
+
+h3.light {
+  @include heading-3($white);
 }
 
 p {
