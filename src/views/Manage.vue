@@ -117,16 +117,36 @@ export default {
       let url = new URL("http://localhost:9000/getUserData");
 
       const data = {
-        email: "test@designcode.io"
+        email: this.email, // test@designcode.io
+        subscriptionId: this.subscriptionId
       };
 
       url.search = new URLSearchParams(data);
+
+      this.subscriptionState = "Loading...";
+      this.seated = "Loading...";
+      this.onTrial = "Loading...";
+      this.trialEndDate = "Loading...";
 
       fetch(url)
         .then(response => response.json())
         .then(data => {
           // eslint-disable-next-line
           console.log(data);
+
+          this.subscriptionState = data.subscriptionStatus;
+          this.seated = data.seated;
+          this.onTrial = data.onTrial;
+          this.trialEndDate = data.trialEndDate;
+        })
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err);
+
+          this.subscriptionState = "";
+          this.seated = "";
+          this.onTrial = "";
+          this.trialEndDate = "";
         });
     }
   }

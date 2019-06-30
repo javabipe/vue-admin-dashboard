@@ -10,11 +10,26 @@ admin.initializeApp({
 });
 
 exports.handler = async function(event, context, callback) {
+  // only works on a deployed site, not on local development
+  // const { identity, user } = context.clientContext;
+
+  // Do the user check here
+  // If not user, callback a status code of 401, meaning unauthorized
+
+  const { email, subscriptionId } = event.queryStringParameters;
+  // eslint-disable-next-line
+  console.log("Searched email: " + email);
+  // eslint-disable-next-line
+  console.log("Searched subscription ID: " + subscriptionId);
+
+  const searchKey = email.length > 0 ? "email" : "subscriptionId";
+  const searchQuery = email.length > 0 ? email : subscriptionId;
+
   const firestore = admin.firestore();
 
   firestore
     .collection("users")
-    .where("email", "==", "test@designcode.io")
+    .where(searchKey, "==", searchQuery)
     .limit(1)
     .get()
     .then((response) => {
