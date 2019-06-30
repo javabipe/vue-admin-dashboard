@@ -1,6 +1,6 @@
 <template>
   <div class="manage">
-    <Header/>
+    <Header />
     <div class="container">
       <h1 :class="{'light': isDarkMode, 'dark': !isDarkMode}">Manage Users</h1>
       <p
@@ -19,7 +19,7 @@
           style="margin: 0"
           type="email"
           v-model="email"
-        >
+        />
         <p
           :class="{'light-text': isDarkMode, 'dark-text': !isDarkMode}"
           style="margin: 0 20px"
@@ -32,7 +32,7 @@
           style="margin: 0"
           type="text"
           v-model="subscriptionId"
-        >
+        />
         <button
           :disabled="!email && !subscriptionId"
           class="manage-button button"
@@ -40,7 +40,7 @@
         >Get Customer Details</button>
       </form>
 
-      <hr class="line-break">
+      <hr class="line-break" />
 
       <h1 :class="{'dark' : !isDarkMode, 'light' : isDarkMode}">Customer Details</h1>
       <div class="details-container">
@@ -114,7 +114,20 @@ export default {
   },
   methods: {
     getUserData() {
-      console.log("Send");
+      let url = new URL("http://localhost:9000/getUserData");
+
+      const data = {
+        email: "test@designcode.io"
+      };
+
+      url.search = new URLSearchParams(data);
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // eslint-disable-next-line
+          console.log(data);
+        });
     }
   }
 };

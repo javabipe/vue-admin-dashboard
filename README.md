@@ -28,6 +28,16 @@ https://github.com/gdg-tangier/vue-firestore
 
 https://alligator.io/vuejs/vue-cloud-firestore/
 
+https://firebase.google.com/docs/admin/setup
+
+https://www.npmjs.com/package/@netlify/zip-it-and-ship-it
+
+https://firebase.google.com/docs/reference/admin/
+
+https://firebase.google.com/docs/reference/admin/node/admin.firestore
+
+https://googleapis.dev/nodejs/firestore/latest/Query.html
+
 ## Netlify
 
 ### Deploy
@@ -103,6 +113,16 @@ Edit settings
 
 Create `functions` folder in root directory with lambda functions
 
+Edit deploy settings
+
+![func3](https://user-images.githubusercontent.com/24504648/60387698-d7ae7600-9aaf-11e9-8c08-1b22a569df7f.png)
+
+Change build command
+
+![func4](https://user-images.githubusercontent.com/24504648/60387720-278d3d00-9ab0-11e9-8e2e-0715fecd5039.png)
+
+When we push project to github, our functions will automatically deploy
+
 #### Run your serverless functions locally for testing
 
 Install [netlify-lambda](https://www.npmjs.com/package/netlify-lambda) `npm install netlify-lambda`
@@ -132,6 +152,50 @@ Grab npm scripts
 Run `npm run start:lambda`
 
 Go to `http://localhost:9000/hello`
+
+#### Troubleshooting
+
+If your Netlify function has additional dependencies, there’s a chance that your function call may fail as a result of node modules not being imported as expected. To ensure that your serverless function has access to the correct dependencies, you can use `@netlify/zip-it-and-ship-it` package.
+
+Install `npm i -S @netlify/zip-it-and-ship-it`
+
+https://github.com/netlify/netlify-lambda/issues/112
+
+https://github.com/netlify/netlify-lambda#webpack-configuration
+
+https://www.netlify.com/blog/2018/09/14/forms-and-functions/
+
+https://medium.com/@saphidev/use-firebase-admin-with-netlify-lambda-functions-free-483d3b390e3a
+
+And then be sure to do the following https://github.com/netlify/netlify-lambda/issues/112#issuecomment-488644361
+
+```js
+//./config/webpack.functions.js
+const nodeExternals = require("webpack-node-externals");
+
+module.exports = {
+  externals: [nodeExternals()]
+};
+```
+
+```json
+{
+  "scripts": {
+    "start:lambda": "netlify-lambda serve src/functions --config ./config/webpack.functions.js",
+    "build:lambda": "netlify-lambda build src/functions --config ./config/webpack.functions.js"
+  }
+}
+```
+
+You also need dependencies `npmi -D webpack-node-externals`
+
+if you get `encoding not found`
+
+Install `npm i -S encoding`
+
+https://github.com/netlify/zip-it-and-ship-it/issues/30
+
+https://www.bridgestew.com/journal/how-to-indieweb-syndicate/
 
 ## Slack
 
@@ -266,6 +330,18 @@ this.$binding("newUsers", db.collection("traffic").doc("newUsers"))
 ![firestore3](https://user-images.githubusercontent.com/24504648/60346607-24b51e00-99c4-11e9-96f0-c5b74e2690a9.png)
 
 ![firestore4](https://user-images.githubusercontent.com/24504648/60346609-24b51e00-99c4-11e9-893d-9c09c11f90ef.png)
+
+### Firebase Admin SDK
+
+![firestore5](https://user-images.githubusercontent.com/24504648/60386556-007a3f80-9a9f-11e9-9b84-61c461182473.png)
+
+Generate new private key
+
+![adminsdk](https://user-images.githubusercontent.com/24504648/60386626-34099980-9aa0-11e9-8078-929dfdd15b0b.png)
+
+![firestore6](https://user-images.githubusercontent.com/24504648/60386886-ee4ed000-9aa3-11e9-8ba5-64ea2a461831.png)
+
+Install `npm i -S firebase-admin`
 
 ### Firestore rules
 
