@@ -122,7 +122,9 @@ export default {
   },
   methods: {
     getUserData() {
-      let url = new URL("http://localhost:9000/getUserData");
+      // let url = new URL("http://localhost:9000/getUserData");
+      // prettier-ignore
+      let url = new URL("https://vue-admin-dashboard-test.netlify.com/.netlify/functions/getUserData");
 
       const data = {
         email: this.email, // test@designcode.io
