@@ -9,7 +9,7 @@ admin.initializeApp({
   databaseURL: "https://vue-hq-12eb5.firebaseio.com"
 });
 
-exports.handler = async function(event, context, callback) {
+exports.handler = async function(event, context) {
   // only works on a deployed site, not on local development
   // const { identity, user } = context.clientContext;
 
@@ -27,41 +27,59 @@ exports.handler = async function(event, context, callback) {
 
   const firestore = admin.firestore();
 
-  firestore
-    .collection("users")
-    .where(searchKey, "==", searchQuery)
-    .limit(1)
-    .get()
-    .then((response) => {
-      if (response.empty) {
-        return Promise.reject();
-      }
+  try {
+    const response = await firestore
+      .collection("users")
+      .where(searchKey, "==", searchQuery)
+      .limit(1)
+      .get();
 
-      const userInfo = response.docs[0].data();
-      // eslint-disable-next-line
-      console.log(userInfo);
+    if (response.empty) {
+      // console.log("No documents found.");
+      // throw new Error("No documents found.");
 
-      callback(null, {
+      const info = {
+        text: "No documents found.",
+        subscriptionStatus: "—",
+        seated: "—",
+        onTrial: "—",
+        trialEndDate: "—"
+      };
+
+      return {
         statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-          "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-        },
-        body: JSON.stringify(userInfo)
-      });
-    })
-    .catch((err) => {
-      // eslint-disable-next-line
-      console.log(err);
-      const msg = Array.isArray(err) ? err[0].message : err.message;
-
-      callback(null, {
-        statusCode: 422,
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true
         },
-        body: JSON.stringify(msg)
-      });
-    });
+        body: JSON.stringify(info)
+      };
+    }
+
+    const userInfo = response.docs[0].data();
+    // eslint-disable-next-line
+    console.log(userInfo);
+
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
+      },
+      body: JSON.stringify(userInfo)
+    };
+  } catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    const msg = Array.isArray(err) ? err[0].message : err.message;
+
+    return {
+      statusCode: 422,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      },
+      body: JSON.stringify(msg)
+    };
+  }
 };

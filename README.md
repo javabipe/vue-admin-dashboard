@@ -197,6 +197,16 @@ https://github.com/netlify/zip-it-and-ship-it/issues/30
 
 https://www.bridgestew.com/journal/how-to-indieweb-syndicate/
 
+#### Other
+
+https://github.com/netlify/netlify-lambda/issues/43
+
+https://github.com/netlify/functions
+
+https://github.com/netlify-labs/functions-site
+
+https://github.com/DavidWells/netlify-functions-workshop
+
 ## Slack
 
 https://api.slack.com/

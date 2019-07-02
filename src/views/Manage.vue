@@ -2,6 +2,11 @@
   <div class="manage">
     <Header />
     <div class="container">
+      <Notification
+        :text="text"
+        v-if="!!text"
+      />
+
       <h1 :class="{'light': isDarkMode, 'dark': !isDarkMode}">Manage Users</h1>
       <p
         :class="{'light-text': isDarkMode, 'dark-text': !isDarkMode}"
@@ -91,11 +96,13 @@
 
 <script>
 import Header from "@/components/Header.vue";
+import Notification from "@/components/Notification.vue";
 
 export default {
   name: "manage",
   components: {
-    Header
+    Header,
+    Notification
   },
   computed: {
     isDarkMode() {
@@ -109,7 +116,8 @@ export default {
       subscriptionState: "",
       seated: "",
       onTrial: "",
-      trialEndDate: ""
+      trialEndDate: "",
+      text: ""
     };
   },
   methods: {
@@ -127,12 +135,23 @@ export default {
       this.seated = "Loading...";
       this.onTrial = "Loading...";
       this.trialEndDate = "Loading...";
+      this.text = "";
 
       fetch(url)
-        .then(response => response.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(res.status);
+          }
+
+          return res.json();
+        })
         .then(data => {
           // eslint-disable-next-line
           console.log(data);
+
+          if (data.text) {
+            this.text = data.text;
+          }
 
           this.subscriptionState = data.subscriptionStatus;
           this.seated = data.seated;
