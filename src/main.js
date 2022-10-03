@@ -13,7 +13,7 @@ Vue.config.productionTip = false;
 netlifyIdentity.init();
 
 export const auth = new GoTrue({
-  APIUrl: "https://vue-admin-dashboard-test.netlify.com/.netlify/identity",
+  APIUrl: "https://magenta-belekoy-e7a035.netlify.app/.netlify/identity",
   setCookie: true
 });
 
