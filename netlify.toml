@@ -1,4 +1,0 @@
-[build]
-  functions = "./functions"
-  command = "CI=false && yarn build"
-  publish = "build"
