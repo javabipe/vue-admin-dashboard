@@ -124,7 +124,7 @@ export default {
     getUserData() {
       // let url = new URL("http://localhost:9000/getUserData");
       // prettier-ignore
-      let url = new URL("https://vue-admin-dashboard-test.netlify.com/.netlify/functions/getUserData");
+      let url = new URL("https://magenta-belekoy-e7a035.netlify.app/.netlify/functions/getUserData");
 
       const data = {
         email: this.email, // test@designcode.io
