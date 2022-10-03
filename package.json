@@ -3,16 +3,16 @@
   "version": "0.2.0",
   "private": false,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "CI=false && vue-cli-service serve",
     "build": "CI=false && vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "start:lambda": "netlify-lambda serve src/functions --config ./config/webpack.functions.js",
+    "lint": "CI=false && vue-cli-service lint",
+    "start:lambda": "CI=false && netlify-lambda serve src/functions --config ./config/webpack.functions.js",
     "build:lambda": " CI=false && netlify-lambda build src/functions --config ./config/webpack.functions.js"
   },
   "dependencies": {
     "@firebase/app": "^0.4.9",
     "@firebase/firestore": "^1.4.3",
-    "@netlify/zip-it-and-ship-it": "",
+    "@netlify/zip-it-and-ship-it": "latest",
     "animate.css": "^3.7.2",
     "apexcharts": "^3.8.1",
     "core-js": "^2.6.5",
@@ -42,7 +42,7 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": false
+      "node": true
     },
     "extends": [
       "plugin:vue/essential",
