@@ -1,7 +1,7 @@
 {
   "name": "vue-admin-dashboard",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -42,7 +42,7 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": false
     },
     "extends": [
       "plugin:vue/essential",
