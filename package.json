@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "serve": "CI=false && vue-cli-service serve",
-    "build": "CI=false && vue-cli-service build",
+    "build": "CI=false && yarn build",
     "lint": "CI=false && vue-cli-service lint",
     "start:lambda": "CI=false && netlify-lambda serve src/functions --config ./config/webpack.functions.js",
     "build:lambda": " CI=false && netlify-lambda build src/functions --config ./config/webpack.functions.js"
