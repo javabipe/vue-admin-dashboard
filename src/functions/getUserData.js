@@ -6,7 +6,7 @@ const serviceAccount = require("./vue-hq-key.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://vue-hq-12eb5.firebaseio.com"
+  databaseURL: "https://algar-1616501032135-default-rtdb.firebaseio.com"
 });
 
 exports.handler = async function(event, context) {
