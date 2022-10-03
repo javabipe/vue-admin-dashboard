@@ -4,10 +4,10 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "CI=false && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start:lambda": "netlify-lambda serve src/functions --config ./config/webpack.functions.js",
-    "build:lambda": "netlify-lambda build src/functions --config ./config/webpack.functions.js"
+    "build:lambda": " CI=false && netlify-lambda build src/functions --config ./config/webpack.functions.js"
   },
   "dependencies": {
     "@firebase/app": "^0.4.9",
