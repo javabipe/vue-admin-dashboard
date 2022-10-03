@@ -12,14 +12,14 @@
   "dependencies": {
     "@firebase/app": "^0.4.9",
     "@firebase/firestore": "^1.4.3",
-    "@netlify/zip-it-and-ship-it": "^0.3.1",
+    "@netlify/zip-it-and-ship-it": "",
     "animate.css": "^3.7.2",
     "apexcharts": "^3.8.1",
     "core-js": "^2.6.5",
     "encoding": "^0.1.12",
     "firebase-admin": "^8.2.0",
-    "gotrue-js": "^0.9.25",
-    "netlify-identity-widget": "^1.5.5",
+    "gotrue-js": "latest",
+    "netlify-identity-widget": "latest",
     "netlify-lambda": "^1.4.13",
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.4.0",
@@ -28,16 +28,16 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vue/cli-plugin-babel": "latest",
+    "@vue/cli-plugin-eslint": "latest",
+    "@vue/cli-service": "latest",
+    "babel-eslint": "latest",
+    "eslint": "latest",
+    "eslint-plugin-vue": "latest",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10",
-    "webpack-node-externals": "^1.7.2"
+    "vue-template-compiler": "latest",
+    "webpack-node-externals": "latest"
   },
   "eslintConfig": {
     "root": true,
