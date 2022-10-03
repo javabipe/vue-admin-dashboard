@@ -69,7 +69,7 @@ export default {
 
         const data = {
           // prettier-ignore
-          token: "xoxp-222424334148-222424334308-677427000800-f3143a74783499547025f9927259b94d",
+          token: "xoxb-4171248575748-4165863353845-s3fOKVOxW81LLHzvBBEh2byh",
           channel: "hq", // first we need to create a channel by that name on your workspace
           // prettier-ignore
           text: `Email ${this.email} has requested admin access to HQ. Please go to Netlify to invite them.`
