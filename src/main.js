@@ -13,7 +13,7 @@ Vue.config.productionTip = false;
 netlifyIdentity.init();
 
 export const auth = new GoTrue({
-  APIUrl: "https://magenta-belekoy-e7a035.netlify.app/.netlify/identity",
+  APIUrl: "https://tangerine-medovik-4ce4d0.netlify.app/.netlify/identity",
   setCookie: true
 });
 
